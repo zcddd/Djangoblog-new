@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<head>
+    <title>Python学习</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/prism/prism.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/elegant_font/css/style.css' %}">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- 网页头部 -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight">Django</span><span class="text-bold">Blog</span>
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">首页</a></li>
+                    <li class="active">Python学习</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+
+
+        <!-- 文章内容区域 -->
+        <div class="doc-wrapper">
+            <div class="container">
+                <!--文章标题-->
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Python</h1>
+                    <div class="meta"><i class="fa fa-clock-o"></i> by zc</div>
+                </div>
+
+                <!--文章正文-->
+                <div class="doc-body">
+                    <div class="doc-content">
+                        <div class="content-inner">
+                            <!--第一篇文章/章节-->
+                            {% for python in all_python %}
+                            <section id="sec{{ forloop.counter }}" class="doc-section">
+                                <h2 class="section-title">{{ python.title }}</h2>
+                                <div class="section-block">
+                                    <p>
+                                        {{ python.content }}
+                                    </p>
+                                </div>
+                            </section>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- 侧边导航栏 -->
+                    <div class="doc-sidebar hidden-xs">
+                        <nav id="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
+                                {% for python in all_python %}
+                                <li><a class="scrollto" href="{{ forloop.counter }}">{{ python.title }}</a></li>
+                                {% endfor %}
+                            </ul><!--//doc-menu-->
+                        </nav>
+                    </div><!--//侧边导航栏-->
+                </div><!--//文章正文-->
+
+            </div><!--//container-->
+        </div><!--文章内容区域-->
+    </div><!--//page-wrapper-->
+
+    <!-- 网页底部 -->
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Powered by  <a href="http://139.199.82.26/" targe="_blank">zc</a> </small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+    <!-- 加载Javascript脚本 -->
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-1.12.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-match-height/jquery.matchHeight-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/prism/prism.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html> 
+
